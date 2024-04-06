@@ -11,6 +11,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
+        Controlleur controlleur = new Controlleur();
+        new Vue(controlleur, primaryStage);
     }
 }

@@ -1,4 +1,5 @@
 package org.example.demo;
 
-public class Commande {
+public abstract class Commande {
+    public abstract void execute(Perspective p, double x, double y);
 }
