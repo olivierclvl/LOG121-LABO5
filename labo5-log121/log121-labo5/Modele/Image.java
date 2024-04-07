@@ -9,8 +9,8 @@ import javax.imageio.ImageIO;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Image extends Sujet implements Serializable{
-	private transient final FileNameExtensionFilter filter = new FileNameExtensionFilter("Type d'image", "jpg", ".jpeg", "jpeg", ".png",".png", ".gif", "gif", ".tiff", "tiff", ".tif", "tif");
-	private transient BufferedImage image;
+	private final FileNameExtensionFilter filter = new FileNameExtensionFilter("Type d'image", "jpg", ".jpeg", "jpeg", ".png",".png", ".gif", "gif", ".tiff", "tiff", ".tif", "tif");
+	private BufferedImage image;
 	private String imageFilePath;
 
 	public void loadImage(File file) {

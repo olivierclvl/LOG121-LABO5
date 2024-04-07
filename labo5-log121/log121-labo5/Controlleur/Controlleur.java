@@ -15,6 +15,7 @@ import java.util.Hashtable;
 
 import Modele.Image;
 import Modele.Perspective;
+import Modele.PerspectiveMemento;
 import Observer.Panneau;
 import Observer.PanneauModifiable;
 import Sauvegarde.DeserialisationSauvegarde;
@@ -118,8 +119,8 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
         for (Object s : (Object[]) config[0]) {
             if (s instanceof Image) {
                 image.copy((Image) s);
-            } else if (s instanceof Perspective.Memento) {
-                ((Perspective) perspectives[i]).restore((Perspective.Memento) s);
+            } else if (s instanceof PerspectiveMemento) {
+                ((Perspective) perspectives[i]).restore((PerspectiveMemento) s);
                 i++;
             }
         }
@@ -185,13 +186,10 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
 
     @Override
     public void mouseClicked(MouseEvent e) {}
-
     @Override
     public void mouseEntered(MouseEvent e) {}
-
     @Override
     public void mouseExited(MouseEvent e) {}
-
     @Override
     public void mouseMoved(MouseEvent e) {}
 }

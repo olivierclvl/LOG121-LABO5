@@ -3,11 +3,11 @@ package Controlleur;
 import Modele.Perspective;
 
 public class Zoom extends Commande {
-	private final double ZOOM_MULTIPLICATOR = 20;
+	private final int MULTIPLICATEUR = 15;
 
     @Override
     public void execute(Perspective p, double factor, double modifiers) {
-		double newScale = p.getScale() - factor * ZOOM_MULTIPLICATOR;
+		double newScale = p.getScale() - (factor * MULTIPLICATEUR);
 		p.setScaleFromZoom(newScale);
     }
 }
