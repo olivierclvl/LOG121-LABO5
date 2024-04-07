@@ -128,10 +128,10 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
         }
 
         if (Sauvegarder.saveConfig(file, serializables.toArray())) {
-            vue.showNotification("Saved");
+            vue.showNotification("Sauvegarde faite!");
         }
         else {
-            vue.showNotification("Error! Couldn't save");
+            vue.showNotification("Erreur! impossible de sauvegarder.");
         }
     }
 
@@ -144,7 +144,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
 
         Object[] config = Sauvegarder.loadConfig(file);
         if (config.length < 1) {
-            vue.showNotification("Error! Couldn't read file");
+            vue.showNotification("Erreur! impossible de lire le fichier.");
             return;
         }
 
@@ -211,7 +211,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
 
         int xTranslation = e.getPoint().x-dragStartPoint.x;
         int yTranslation = e.getPoint().y-dragStartPoint.y;
-        perspectives.get((PerspectiveView)e.getSource()).executeDrag(xTranslation,yTranslation);
+        perspectives.get((PerspectiveView)e.getSource()).executeTranslation(xTranslation,yTranslation);
         dragStartPoint = e.getPoint();
     }
 

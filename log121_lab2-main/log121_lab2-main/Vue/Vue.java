@@ -78,7 +78,7 @@ public class Vue {
      */
     private JFileChooser createFileChooser(FileNameExtensionFilter filter) {
         JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        fileChooser.setDialogTitle("Sélectionnez une image");
+        fileChooser.setDialogTitle("Sélectionnez un fichier");
         fileChooser.setMultiSelectionEnabled(true);
         fileChooser.setAcceptAllFileFilterUsed(false);
 
@@ -140,7 +140,7 @@ public class Vue {
      * Prompt the user to choose a type of strategy for the copy or paste.
      */
     public void dialogWindow() {
-    	JDialog dialog = new JDialog(frame, "Choose what to copy", true);
+    	JDialog dialog = new JDialog(frame, "Choisir le type de copie", true);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setLayout(new BorderLayout());
 

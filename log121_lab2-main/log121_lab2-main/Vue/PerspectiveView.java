@@ -5,6 +5,7 @@ import Modele.Perspective;
 import Modele.Sujet;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PerspectiveView extends ThumbnailView {
 
@@ -23,13 +24,34 @@ public class PerspectiveView extends ThumbnailView {
         JButton undoButton = new JButton("Undo");
         JButton redoButton = new JButton("Redo");
         JButton resetButton = new JButton("Réinitialiser");
-        this.add(undoButton);
+        this.add(undoButton, BorderLayout.SOUTH);
         this.add(redoButton);
         this.add(resetButton);
         undoButton.addActionListener(controlleur);
         redoButton.addActionListener(controlleur);
         resetButton.addActionListener(controlleur);
-    }
+
+       /* setLayout(new BorderLayout());
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        JButton undoButton = new JButton("Undo");
+        JButton redoButton = new JButton("Redo");
+        JButton resetButton = new JButton("Réinitialiser");
+
+        buttonPanel.add(undoButton);
+        buttonPanel.add(redoButton);
+        buttonPanel.add(resetButton);
+
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        undoButton.addActionListener(controlleur);
+        redoButton.addActionListener(controlleur);
+        resetButton.addActionListener(controlleur);*/
+
+
+}
     
     /**
      * Update the panel with the given subject

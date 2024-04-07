@@ -1,7 +1,6 @@
 package Modele;
 
 import java.awt.Point;
-import java.io.Serializable;
 
 import Controlleur.Command;
 
@@ -12,7 +11,7 @@ public class Perspective extends Sujet {
     private Point imageDimension = new Point(0, 0);
     private double scale = 0;
     private Command zoomCommand;
-    private Command dragCommand;
+    private Command translationCommand;
 
     /**
      * Execute the zoom command
@@ -28,18 +27,18 @@ public class Perspective extends Sujet {
      * @param xTranslation the translation the image must do on the x axis
      * @param yTranslation the translation the image must do on the y axis
      */
-    public void executeDrag(double xTranslation, double yTranslation) {
-        dragCommand.execute(this, xTranslation, yTranslation);
+    public void executeTranslation(double xTranslation, double yTranslation) {
+        translationCommand.execute(this, xTranslation, yTranslation);
     }
 
     /**
      * Set both the zoom and the drag commands
      * @param zoomCommand
-     * @param dragCommand
+     * @param translationCommand
      */
-    public void setCommands(Command zoomCommand, Command dragCommand) {
+    public void setCommands(Command zoomCommand, Command translationCommand) {
         this.zoomCommand = zoomCommand;
-        this.dragCommand = dragCommand;
+        this.translationCommand = translationCommand;
     }
 
     /**
@@ -142,48 +141,5 @@ public class Perspective extends Sujet {
         notifyObservers();
     }
 
-    /**
-     * Represent a snapshot of the class.
-     */
-//    public static class Memento implements Serializable {
-//        private Point position;
-//        private Point imageDimension;
-//        private double scale;
-//
-//        /**
-//         * The constructor of the Memento class.
-//         * @param position
-//         * @param imageDimension
-//         * @param scale
-//         */
-//        private Memento (Point position, Point imageDimension, double scale) {
-//            this.position = position;
-//            this.imageDimension = imageDimension;
-//            this.scale = scale;
-//        }
-//
-//        /**
-//         * The position getter
-//         * @return The position
-//         */
-//        private Point getPosition() {
-//            return position;
-//        }
-//
-//        /**
-//         * The image dimension getter
-//         * @return The image dimension
-//         */
-//        private Point getImageDimension() {
-//            return imageDimension;
-//        }
-//
-//        /**
-//         * The scale getter
-//         * @return The scale
-//         */
-//        private double getScale() {
-//            return scale;
-//        }
-//    }
+
 }
