@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e8426705-2a29-4aaf-909a-6d47bf0b6f22" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/log121_labo5-main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlleur/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlleur/CommandManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlleur/Controlleur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlleur/Translation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlleur/Zoom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modele/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modele/Perspective.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modele/PerspectiveMomento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modele/Sujet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/AucuneCopieStrategie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/CopieStrategie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/Mediateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/PerspectiveMediateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/Sauvegarder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/TranslationCopieStrategie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/ZoomCopieStrategie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SauvegarderCopierColler/ZoomTranslationCopieStrategie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Observateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/PerspectiveView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/ThumbnailView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Vue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log121_labo5-main.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2esFRJWeXZk5QBEzBU0oglBs9eT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "omar",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Cyrille/source/repos/appmobile-tp1_Cyrille_Mvoum_Minam-gr1/LOG121-LABO5/log121_labo5-main/log121_labo5-main",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="log121_labo5-main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="log121_labo5-main" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-ebaef533" />
+        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8426705-2a29-4aaf-909a-6d47bf0b6f22" name="Changes" comment="" />
+      <created>1712685370379</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712685370379</updated>
+    </task>
+    <servers />
+  </component>
+</project>
