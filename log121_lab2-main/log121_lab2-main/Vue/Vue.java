@@ -17,16 +17,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+/**
+ *
+ * Ce module permet de représenter la classe Vue. elle permet de gérer l'affichage des image en fotion des informations
+ * reçu par le modèle.
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class Vue {
     private Controlleur controlleur;
     private JFrame frame;
 
     /**
-     * The constructor of the view class.
+     * Ce constructeur par initialisation crée une interface avec les différentes vues(panneaux) nécessaires
      * @param controlleur
-     */
-    /**
-     * Create and set up the application's interface.
+     *         Le controlleur de la vue
+     *@return
+     *         Crée l'interface utilisatur
      */
     public Vue(Controlleur controlleur) {
         this.controlleur = controlleur;
@@ -72,9 +81,12 @@ public class Vue {
     }
 
     /**
-     * Create a JFileChooser accepting only the specified extensions.
-     * @param filter The extensions that can be selected
-     * @return The JFileChooser created
+     * Crée un sélectionneur de fichiers n'acceptant que les extensions spécifiées.
+     * @param filter
+     *       Les extensions qui peuvent être sélectionnées
+     *
+     * @return
+     *       Le sélectionneur de fichiers créé
      */
     private JFileChooser createFileChooser(FileNameExtensionFilter filter) {
         JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -82,7 +94,7 @@ public class Vue {
         fileChooser.setMultiSelectionEnabled(true);
         fileChooser.setAcceptAllFileFilterUsed(false);
 
-
+        //on cree d'autres filtres pour les fichers
         FileNameExtensionFilter filter2 = new FileNameExtensionFilter("Image (.png)", "png");
         FileNameExtensionFilter filter3 = new FileNameExtensionFilter("Image (.jif)", "jif");
         FileNameExtensionFilter filter4 = new FileNameExtensionFilter("Image (.tiff)", "tiff");
@@ -97,9 +109,11 @@ public class Vue {
     }
 
     /**
-     * Prompt the user to choose a file.
-     * @param filter The accepted extensions
-     * @return The file selected by the user
+     * Demander à l'utilisateur de choisir un fichier.
+     * @param filter
+     *        Les extensions acceptées
+     * @return
+     *       Le fichier sélectionné par l'utilisateur
      */
     public File getFile(FileNameExtensionFilter filter) {
         File selectedFile = null;
@@ -113,9 +127,11 @@ public class Vue {
     }
 
     /**
-     * Prompt the user to choose a file to save to.
-     * @param filter The accepted extensions
-     * @return The file selected by the user
+     * Cette méthode permet de récupérer le fichier sélectionné par l'utilisateur
+     * @param filter
+     *        Les extensions acceptées
+     * @return
+     *        Le fichier sélectionné par l'utilisateur
      */
     public File getSaveLocation(FileNameExtensionFilter filter) {
         File selectedFile = null;
@@ -129,15 +145,16 @@ public class Vue {
     }
 
     /**
-     * Show a notification to the user.
-     * @param message The message of the notification
+     * Affiche une notification à l'utilisateur.
+     * @param message
+     *       Le contenu du message de la notification
      */
     public void showNotification(String message) {
         JOptionPane.showMessageDialog(frame, message, "", JOptionPane.INFORMATION_MESSAGE);
     }
     
     /**
-     * Prompt the user to choose a type of strategy for the copy or paste.
+     * Cette méthode crée la fenêtre qui contiendra les différentes options de copier-coller
      */
     public void dialogWindow() {
     	JDialog dialog = new JDialog(frame, "Choisir le type de copie", true);

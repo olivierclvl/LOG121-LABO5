@@ -3,14 +3,24 @@ package Controlleur;
 import Modele.Perspective;
 import java.awt.Point;
 
-
+/**
+ *
+ * Ce module permet d'exécuter une translation ou déplacement de l'image grace à l'implémentation de la méthode execute.
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class Translation extends Command{
 
     /**
-     * Drag the image to a new point
-     * @param perspective The perspective on which the drag is executed
-     * @param xTranslation The translation on the x axis
-     * @param yTranslation The translation on the y axis
+     * Fait glisser l'image vers un nouveau point
+     * @param perspective
+     *        La perspective sur laquelle le déplacement est effectué
+     * @param xTranslation
+     *        La translation sur l'axe x
+     * @param yTranslation
+     *        La translation sur l'axe y
      */
     @Override
     public void execute(Perspective perspective, double xTranslation, double yTranslation) {

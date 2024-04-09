@@ -30,6 +30,15 @@ import Vue.Vue;
 
 import javax.swing.*;
 
+/**
+ *
+ * Ce module permet de représenter le controlleur. elle permet de gérer les actions de la souris afin d'appliquer les
+ * commandes et changement appropriés
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class Controlleur implements MouseListener, MouseMotionListener, ActionListener, MouseWheelListener {
     private boolean isDragging = false;
     private Image image;
@@ -42,55 +51,61 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
 
 
     /**
-     * The contstructor of the controller
+     * Le constructeur de l'image
      */
     public Controlleur() {
         image = new Image();
     }
 
     /**
-     * Undo the last changes applied to the perspective of the given panel.
-     * @param panel The given panel
+     * Annule les derniers changements appliqués à la perspective du panneau donné.
+     * @param panel
+     *        Le panneau donné
      */
     private void undo(PerspectiveView panel) {
         CommandManager.getInstance().undo(perspectives.get(panel));
     }
 
     /**
-     * Redo the last undone changes from the perspective of the given panel.
-     * @param panel The given panel
+     * Reapplique les derniers changements appliqués à la perspective du panneau donné.
+     * @param panel
+     *        Le panneau donné
      */
     private void redo(PerspectiveView panel) {
         CommandManager.getInstance().redo(perspectives.get(panel));
     }
 
     /**
-     * Reset the image perspective of the given panel
-     * @param panel The given panel
+     * Remet l'image de la perspective à son état initial
+     * @param panel
+     *        Le panneau donné
      */
     private void reset(PerspectiveView panel) {
         CommandManager.getInstance().reset(perspectives.get(panel));
     }
 
     /**
-     * Attach the image to the given panel
-     * @param thumbnailView The given panel
+     * Ajoute une image au panneau
+     * @param thumbnailView
+     *        Le panneau donné
      */
     public void attachImage(ThumbnailView thumbnailView) {
     	image.attachObserver(thumbnailView);
     }
 
     /**
-     * Set the view
+     * Définie la vue
      * @param vue
+     *        La vue passée en paramètre
      */
     public void setView(Vue vue) {
     	this.vue = vue;
     }
 
      /**
-     * Attach a perspective to the given panel
-     * @param ap the given panel
+     * Ajoute une perspective à un panneau
+     * @param ap
+     *        Le panneau donné
      */
     public void attachPerspective(PerspectiveView ap) {
         Perspective p = new Perspective();
@@ -100,7 +115,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
     }
 
     /**
-     * Load an image
+     * Permet de charger l'image
      */
     private void loadImage() {
         File file = this.vue.getFile(image.getFilter());
@@ -115,7 +130,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
     }
 
     /**
-     * Save the Image and Perspectives
+     * Permet de sauvegarder l'image et les Perspectives
      */
     private void save() {
         File file = vue.getSaveLocation(Sauvegarder.EXTENTION_FILTER);
@@ -136,7 +151,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
     }
 
     /**
-     * Load the Image and Perspectives from a file
+     * Permet de charger une image et les perspectives d'un fichier
      */
     private void load() {
         File file = vue.getFile(Sauvegarder.EXTENTION_FILTER);
@@ -162,15 +177,17 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
     }
 
     /**
-     * Paste the copied strategy to a perspective
+     * Coller la stratégie copiée à la perspective
      */
     public void paste() {
     	mediateur.paste(chosenPerspective);
     }
 
+
     /**
-     * Set the strategy obtain from the view and apply the strategy to the mediator
-     * @param strategy The strategy from the view
+     * Défini la stratégie obtenue de la vue et applique la stratégie au médiateur
+     * @param strategy
+     *        La stratégie provenant de la vue
      */
     public void setStrategyAndCopy(String strategy) {
     	CopieStrategie copieStrategie;
@@ -192,6 +209,9 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
     	mediateur.storeCopy(copieStrategie);
     }
 
+    /**
+     * Permet de gérer l'évènement lorsqu'un bouton de la souris est enfoncé.
+     */
     @Override
     public void mousePressed(MouseEvent e) {
     	if(e.getButton() == MouseEvent.BUTTON3) {
@@ -202,6 +222,9 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
     	}
     }
 
+    /**
+     * Permet de gérer l'évènement de déplacement de la souris
+     */
     @Override
     public void mouseDragged(MouseEvent e) {
         if (!isDragging) {
@@ -215,11 +238,19 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
         dragStartPoint = e.getPoint();
     }
 
+    /**
+     * Permet de gérer l'évènement de relachement de la souris
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         isDragging = false;
     }
 
+    /**
+     * Applique l'action nécessaire en fonction de l'évènement détecté par la souris
+     * @param e
+     *        l'évènement liée à l'action faite
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
@@ -244,6 +275,9 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
         }
     }
 
+    /**
+     * Permet de gérer l'évènement lié à la rotation de la molette de la souris
+     */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
         Perspective perspective = perspectives.get((PerspectiveView)e.getSource());
@@ -254,15 +288,27 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
         perspective.executeZoom(factor, modifiers);
 	}
 
+    /**
+     * Permet de gérer l'évènement lié au clic de la souris
+     */
     @Override
     public void mouseClicked(MouseEvent e) {}
 
+    /**
+     * Permet de gérer l'évènement lorsque le curseur de la souris entre dans la zone d'un composant graphique
+     */
     @Override
     public void mouseEntered(MouseEvent e) {}
 
+    /**
+     * Permet de gérer l'évènement lorsque le curseur de la souris quitte la zone d'un composant graphique.
+     */
     @Override
     public void mouseExited(MouseEvent e) {}
 
+    /**
+     * Permet de gérer l'évènement lorsqu'un événement de déplacement de souris est détecté
+     */
     @Override
     public void mouseMoved(MouseEvent e) {}
 }

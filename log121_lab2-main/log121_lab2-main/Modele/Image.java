@@ -8,15 +8,25 @@ import java.io.Serializable;
 import javax.imageio.ImageIO;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ *
+ * Ce module permet de représenter lune image. elle permet de consigner les caractéristiques d'une image.
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class Image extends Sujet implements Serializable{
 
-	private transient final FileNameExtensionFilter filter = new FileNameExtensionFilter("image(.jpg)", "jpg", ".jpeg", "jpeg");
+	private transient final FileNameExtensionFilter filter =
+			                     new FileNameExtensionFilter("image(.jpg)", "jpg", ".jpeg", "jpeg");
 	private transient BufferedImage image;
 	private String imagePath;
 
 	/**
-	 * Load the image contained in the given file
-	 * @param file The given file
+	 * Charge l'image contenue dans le fichier donné
+	 * @param file
+	 *        Le fichier donné
 	 */
 	public void loadImage(File file) {
 		imagePath = file.getAbsolutePath();
@@ -29,25 +39,29 @@ public class Image extends Sujet implements Serializable{
 	}
 
 	/**
-	 * The image getter
-	 * @return the buffered image
+	 * Récupère l'image choisie
+	 * @return
+	 *        l'image mise en mémoire tampon
 	 */
 	public BufferedImage getImage() {
 		return image;
 	}
 
 	/**
-	 * The file extention filter getter
-	 * @return The file extention filter
+	 * Récupère le filtre de l'extension du fichier image
+	 * @return
+	 *        le filtre de l'extension du fichier image
 	 */
 	public FileNameExtensionFilter getFilter() {
 		return filter;
 	}
 
 	/**
-	 * Scale the dimension of the image to the panel
-	 * @param panelDim The dimension of the panel
-	 * @return The scaled dimension
+	 * Met à l'échelle les dimensions de l'image pour correspondre au panneau
+	 * @param panelDim
+	 *        La dimension du panneau
+	 * @return
+	 *       La nouvelle dimension mise à l'échelle
 	 */
 	public Point getScaledDimension(Point panelDim) {
 		int width = image.getWidth();
@@ -61,8 +75,9 @@ public class Image extends Sujet implements Serializable{
 		return new Point(scaledWidth,scaledHeight);
 	}
 
-     /** Copy the buffered image of the specified image.
-     * @param image The image to copy
+     /** Copier l'image mise en mémoire tampon de l'image spécifiée.
+     * @param image
+	  *       L'image à copier
      */
     public void copy(Image image) {
 		loadImage(new File(image.imagePath));

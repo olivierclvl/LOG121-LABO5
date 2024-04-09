@@ -7,13 +7,23 @@ import Modele.Sujet;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ *
+ * Ce module représente les vues modifiables. on peut zoomer et translater
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class PerspectiveView extends ThumbnailView {
 
     private Controlleur controlleur;
 
     /**
-     * The constructor of the AlterablePanel class
-     * @param controlleur
+     * Ce constructeur crée la vue modifiable Perspaectiveview
+     *
+     *@return
+     *         Crée le panneau des vues modifiables
      */
     public PerspectiveView(Controlleur controlleur) {
         this.controlleur = controlleur;
@@ -31,31 +41,13 @@ public class PerspectiveView extends ThumbnailView {
         redoButton.addActionListener(controlleur);
         resetButton.addActionListener(controlleur);
 
-       /* setLayout(new BorderLayout());
-
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JButton undoButton = new JButton("Undo");
-        JButton redoButton = new JButton("Redo");
-        JButton resetButton = new JButton("Réinitialiser");
-
-        buttonPanel.add(undoButton);
-        buttonPanel.add(redoButton);
-        buttonPanel.add(resetButton);
-
-        add(buttonPanel, BorderLayout.SOUTH);
-
-        undoButton.addActionListener(controlleur);
-        redoButton.addActionListener(controlleur);
-        resetButton.addActionListener(controlleur);*/
-
 
 }
-    
+
     /**
-     * Update the panel with the given subject
-     * @param s the given subject 
+     * met à jour la vue en fonction du sujet passé en paramètre
+     * @param s
+     *       le sujet donné
      */
     @Override
     public void update(Sujet s) {

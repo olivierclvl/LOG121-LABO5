@@ -6,6 +6,14 @@ import Modele.PerspectiveMomento;
 import java.util.HashMap;
 import java.util.Stack;
 
+/**
+ *
+ * Ce module permet de de gérer l'historique des commandes faites sur une vue.
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class CommandManager {
 
     private static CommandManager instance = null;
@@ -14,7 +22,7 @@ public class CommandManager {
     private HashMap<Perspective, Stack<PerspectiveMomento>> undoHistorique;
 
     /**
-     * The private constructor of the HistoryManager class
+     * Le ocnstructeur privé de la classe CommandManger
      */
     private CommandManager(){
         historique = new HashMap<>();
@@ -22,8 +30,9 @@ public class CommandManager {
     }
 
     /**
-     * The instance getter
-     * @return The instance
+     * Permet de récupérer une instance unique de CommandManger
+     * @return
+     *       l'instance de CommandManger
      */
     public static CommandManager getInstance() {
         if (instance == null) {
@@ -34,25 +43,29 @@ public class CommandManager {
     }
 
     /**
-     * Save a snapshot of the given perspective to history.
-     * @param p The given perspective
+     * Sauvegarde la capture d'état d'une perspective donnée dans la pile historique.
+     * @param p
+     *        La perspective sélectionnée
      */
     public void save(Perspective p) {
         save(p, historique);
     }
 
     /**
-     * Save a snapshot of the given perspective to the undo history.
-     * @param p The given perspective
+     * Sauvegarde la capture d'état d'une perspective donnée dans la pile undoHistorique.
+     * @param p
+     *        Sauvegarde la capture d'état d'une perspective donnée dans l'historique.
      */
     private void saveUndo(Perspective p) {
         save(p, undoHistorique);
     }
 
     /**
-     * Save a snapshot of the given perspective to the given history.
-     * @param p The given perspective
-     * @param history The given history
+     * Sauvegarde la capture d'état d'une perspective donnée dans la pile d'historique donnée
+     * @param p
+     *        La perspective donnée
+     * @param history
+     *        la pile d'historique donnée
      */
     private void save(Perspective p, HashMap<Perspective, Stack<PerspectiveMomento>> history) {
         Stack<PerspectiveMomento> persHist;
@@ -67,8 +80,9 @@ public class CommandManager {
     }
 
     /**
-     * Undo the last changes applied to the given perspective.
-     * @param p The given perspective
+     * Enlève ou défait les derniers changements appliqués à une perspective
+     * @param p
+     *       La perspective passée en paramètre
      */
     public void undo(Perspective p) {
         if (!historique.containsKey(p)) return;
@@ -79,8 +93,9 @@ public class CommandManager {
     }
 
     /**
-     * Redo the last undone changes from the given perspective.
-     * @param p The given perspective
+     * Reapplique les derniers changements défaits appliqués à une perspective
+     * @param p
+     *        La perspective passée en paramètre
      */
     public void redo(Perspective p) {
         if (!undoHistorique.containsKey(p)) return;
@@ -91,8 +106,9 @@ public class CommandManager {
     }
 
     /**
-     * Reset the given perspective
-     * @param p The given perspective
+     * Remet la perspective à son état initial
+     * @param p
+     *        La perspective passée en paramètre
      */
     public void reset(Perspective p) {
         save(p);
@@ -100,15 +116,16 @@ public class CommandManager {
     }
 
     /**
-     * The default perspective setter
-     * @param p The given perspective to make default
+     * Défini une perspective par défaut
+     * @param p
+     *        La perspective à mettre par défaut
      */
     public void setDefaultPerspective(Perspective p) {
         defaultPerspective = p.takeDefaultSnapshot();
     }
 
     /**
-     * Clear the histories
+     * Efface les piles d'historiques
      */
     public void clearHistory() {
         historique.clear();
