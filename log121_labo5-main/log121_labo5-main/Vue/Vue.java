@@ -8,11 +8,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -58,6 +58,12 @@ public class Vue {
         ThumbnailView thumbnailView1 = new ThumbnailView();
         PerspectiveView panneau2 = new PerspectiveView(controlleur);
         PerspectiveView panneau3 = new PerspectiveView(controlleur);
+
+        Border bordure = BorderFactory.createLineBorder(Color.BLACK, 1);
+
+        panneau2.setBorder(bordure);
+        panneau3.setBorder(bordure);
+        thumbnailView1.setBorder(bordure);
         
         controlleur.attachImage(thumbnailView1);
         controlleur.attachImage(panneau2);
