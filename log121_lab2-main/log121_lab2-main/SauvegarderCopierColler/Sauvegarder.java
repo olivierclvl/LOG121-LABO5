@@ -4,15 +4,27 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ *
+ * Ce module permet de représenter la classe Sauvegarder . elle permet de gérer la sauvegarde de l'état actuel dans un
+ * fichier et aussi de pouvoir charger ce fichier sauvegardé.
+ *
+ * @author Nguientchi Fokwe Djerelle Melissa, Pierre-Olivier Clervil, Omar Khudhair, Sif Din Marchane
+ * @since H2024
+ * @version Equipe K - H2024
+ */
 public class Sauvegarder {
     private static final String EXTENTION = ".save";
     public static final FileNameExtensionFilter EXTENTION_FILTER = new FileNameExtensionFilter(EXTENTION,EXTENTION.substring(1));
 
     /**
-     * Write the configuration to the specified file.
-     * @param file The file to save the config to
-     * @param objs The objects to save
-     * @return True if the save was successful, False otherwise
+     * Permet de sauvegarder la configuration dans le fichier ou dossier choisi
+     * @param file
+     *        Le fichier où sauvegarder la configuration
+     * @param objs
+     *        Les objets à sauvegarder
+     * @return
+     *        True si la sauvegarde a réussi, False sinon
      */
     public static boolean saveConfig(File file, Object[] objs) {
         boolean saveSuccessful = true;
@@ -37,9 +49,11 @@ public class Sauvegarder {
     }
 
     /**
-     * Read the configuration from the specified file.
-     * @param file The file to load the config from
-     * @return The Objects read from the file
+     * Permet de Lire et charger la configuration à partir du fichier sélectionné.
+     * @param file
+     *        Le fichier à partir duquel charger la configuration
+     * @return
+     *        Les objets lus à partir du fichier. l'image est chargée.
      */
     public static Object[] loadConfig(File file) {
         ArrayList<Object> config = new ArrayList<>();
@@ -52,7 +66,7 @@ public class Sauvegarder {
             }
 
         } catch (EOFException eofe) {
-            System.out.println("End of file");
+            System.out.println("Fin du fichier");
         } catch (ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         } finally {
