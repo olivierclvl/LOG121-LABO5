@@ -126,20 +126,17 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
      * Permet de sauvegarder l'image et les Perspectives
      */
     private void save() {
-        // Assuming `vue.getSaveLocation(...)` opens a file chooser dialog and returns the selected file.
         File file = vue.getSaveLocation(SauvegardeSerialisation.EXTENTION_FILTER);
-        if (file == null) return; // If no file was selected, exit the method.
+        if (file == null) return;
 
         ArrayList<Serializable> serializables = new ArrayList<>();
-        serializables.add(image); // Assuming `image` is a Serializable object representing an image.
+        serializables.add(image);
         for (Perspective p : perspectives.values()) {
-            serializables.add(p.takeSnapshot()); // Assuming each Perspective's snapshot is Serializable.
+            serializables.add(p.takeSnapshot());
         }
 
-        // Create an instance of the serialization strategy class.
         SauvegardeSerialisation sauvegarde = new SauvegardeSerialisation();
 
-        // Execute the save operation. Since `execute` returns null upon success, we check if the result is not null to determine failure.
         if (sauvegarde.execute(file, serializables.toArray()) == null) {
             vue.showNotification("Sauvegarde faite!");
         } else {
@@ -152,15 +149,11 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
      * Permet de charger une image et les perspectives d'un fichier
      */
     private void load() {
-        // Assuming `vue.getFile(...)` opens a file chooser dialog and returns the selected file.
         File file = vue.getSaveLocation(SauvegardeSerialisation.EXTENTION_FILTER);
 
-        if (file == null) return; // If no file was selected, exit the method.
+        if (file == null) return;
 
-        // Create an instance of the deserialization strategy class.
         SauvegardeDeserialisation sauvegardeDeserialisation = new SauvegardeDeserialisation();
-
-        // Execute the load operation. Pass `null` as the second parameter since it's not used for loading.
         Object[] config = sauvegardeDeserialisation.execute(file, null);
 
         if (config == null || config.length < 1) {
@@ -168,22 +161,19 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
             return;
         }
 
-        // Assuming the first object in the array is always an Image and the rest are PerspectiveMomento objects.
-        // Reset current states or clear existing data if necessary.
         Object[] perspectivesArray = perspectives.values().toArray();
         int i = 0;
         for (Object s : config) {
             if (s instanceof Image) {
-                image.copy((Image) s); // Assuming `image.copy(...)` is a method to copy image properties.
+                image.copy((Image) s);
             } else if (s instanceof PerspectiveMomento) {
                 if (i < perspectivesArray.length) {
-                    ((Perspective) perspectivesArray[i]).restore((PerspectiveMomento) s); // Restore the state of each Perspective.
+                    ((Perspective) perspectivesArray[i]).restore((PerspectiveMomento) s);
                     i++;
                 }
             }
         }
 
-        // Clear command history after loading new data.
         CommandManager.getInstance().clearHistory();
         vue.showNotification("Chargement réussi!");
     }
