@@ -3,7 +3,7 @@ package Sauvegarde;
 import java.io.*;
 import java.util.ArrayList;
 
-public class DeserialisationSauvegarde implements StrategieSauvegarde {
+public class DeserialisationSauvegarde extends StrategieSauvegarde {
     @Override
     public boolean execute(File file, Object[] data) {
         ArrayList<Object> config = new ArrayList<>();

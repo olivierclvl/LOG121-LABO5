@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class SerialisationSauvegarde implements StrategieSauvegarde {
+public class SerialisationSauvegarde extends StrategieSauvegarde {
     private static final String EXTENTION = ".save";
 
     @Override

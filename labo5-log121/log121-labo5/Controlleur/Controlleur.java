@@ -20,6 +20,7 @@ import Observer.Panneau;
 import Observer.PanneauModifiable;
 import Sauvegarde.DeserialisationSauvegarde;
 import Sauvegarde.SerialisationSauvegarde;
+import Sauvegarde.StrategieSauvegarde;
 import Vue.Vue;
 
 import javax.swing.*;
@@ -94,7 +95,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
             serializables.add(p.takeSnapshot());
         }
 
-        SerialisationSauvegarde serialisationSauvegarde = new SerialisationSauvegarde();
+        StrategieSauvegarde serialisationSauvegarde = new SerialisationSauvegarde();
         if (serialisationSauvegarde.execute(file, serializables.toArray())) {
             vue.showNotification("Sauvegarde effectué avec succès");
         } else {
@@ -108,7 +109,7 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
 
         Object[] config = new Object[1];
 
-        DeserialisationSauvegarde deserialisationSauvegarde = new DeserialisationSauvegarde();
+        StrategieSauvegarde deserialisationSauvegarde = new DeserialisationSauvegarde();
         if (!deserialisationSauvegarde.execute(file, config)) {
             vue.showNotification("Erreur! Impossible de lire le fichier");
             return;
