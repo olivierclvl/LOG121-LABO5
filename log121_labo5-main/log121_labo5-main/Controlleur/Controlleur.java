@@ -16,14 +16,7 @@ import java.util.Hashtable;
 import Modele.Image;
 import Modele.Perspective;
 import Modele.PerspectiveMomento;
-import SauvegarderCopierColler.Sauvegarder;
-import SauvegarderCopierColler.ZoomTranslationCopieStrategie;
-import SauvegarderCopierColler.CopieStrategie;
-import SauvegarderCopierColler.Mediateur;
-import SauvegarderCopierColler.AucuneCopieStrategie;
-import SauvegarderCopierColler.PerspectiveMediateur;
-import SauvegarderCopierColler.ZoomCopieStrategie;
-import SauvegarderCopierColler.TranslationCopieStrategie;
+import SauvegarderCopierColler.*;
 import Vue.PerspectiveView;
 import Vue.ThumbnailView;
 import Vue.Vue;
@@ -133,48 +126,68 @@ public class Controlleur implements MouseListener, MouseMotionListener, ActionLi
      * Permet de sauvegarder l'image et les Perspectives
      */
     private void save() {
-        File file = vue.getSaveLocation(Sauvegarder.EXTENTION_FILTER);
-        if (file == null) return;
+        // Assuming `vue.getSaveLocation(...)` opens a file chooser dialog and returns the selected file.
+        File file = vue.getSaveLocation(SauvegardeSerialisation.EXTENTION_FILTER);
+        if (file == null) return; // If no file was selected, exit the method.
 
         ArrayList<Serializable> serializables = new ArrayList<>();
-        serializables.add(image);
+        serializables.add(image); // Assuming `image` is a Serializable object representing an image.
         for (Perspective p : perspectives.values()) {
-            serializables.add(p.takeSnapshot());
+            serializables.add(p.takeSnapshot()); // Assuming each Perspective's snapshot is Serializable.
         }
 
-        if (Sauvegarder.saveConfig(file, serializables.toArray())) {
+        // Create an instance of the serialization strategy class.
+        SauvegardeSerialisation sauvegarde = new SauvegardeSerialisation();
+
+        // Execute the save operation. Since `execute` returns null upon success, we check if the result is not null to determine failure.
+        if (sauvegarde.execute(file, serializables.toArray()) == null) {
             vue.showNotification("Sauvegarde faite!");
-        }
-        else {
+        } else {
             vue.showNotification("Erreur! impossible de sauvegarder.");
         }
     }
+
 
     /**
      * Permet de charger une image et les perspectives d'un fichier
      */
     private void load() {
-        File file = vue.getFile(Sauvegarder.EXTENTION_FILTER);
-        if (file == null) return;
+        // Assuming `vue.getFile(...)` opens a file chooser dialog and returns the selected file.
+        File file = vue.getSaveLocation(SauvegardeSerialisation.EXTENTION_FILTER);
 
-        Object[] config = Sauvegarder.loadConfig(file);
-        if (config.length < 1) {
+        if (file == null) return; // If no file was selected, exit the method.
+
+        // Create an instance of the deserialization strategy class.
+        SauvegardeDeserialisation sauvegardeDeserialisation = new SauvegardeDeserialisation();
+
+        // Execute the load operation. Pass `null` as the second parameter since it's not used for loading.
+        Object[] config = sauvegardeDeserialisation.execute(file, null);
+
+        if (config == null || config.length < 1) {
             vue.showNotification("Erreur! impossible de lire le fichier.");
             return;
         }
 
-        Object[] perspectives = this.perspectives.values().toArray();
+        // Assuming the first object in the array is always an Image and the rest are PerspectiveMomento objects.
+        // Reset current states or clear existing data if necessary.
+        Object[] perspectivesArray = perspectives.values().toArray();
         int i = 0;
         for (Object s : config) {
             if (s instanceof Image) {
-                image.copy((Image)s);
+                image.copy((Image) s); // Assuming `image.copy(...)` is a method to copy image properties.
             } else if (s instanceof PerspectiveMomento) {
-                ((Perspective)perspectives[i]).restore((PerspectiveMomento)s);
-                i++;
+                if (i < perspectivesArray.length) {
+                    ((Perspective) perspectivesArray[i]).restore((PerspectiveMomento) s); // Restore the state of each Perspective.
+                    i++;
+                }
             }
         }
+
+        // Clear command history after loading new data.
         CommandManager.getInstance().clearHistory();
+        vue.showNotification("Chargement réussi!");
     }
+
 
     /**
      * Coller la stratégie copiée à la perspective
